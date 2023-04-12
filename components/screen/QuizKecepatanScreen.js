@@ -21,7 +21,7 @@ const QuizPercepatan = ({ navigation }) => {
   const [quiz, setQuiz] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  const url = `https://2b07-103-132-52-90.ngrok-free.app/api/quiz/category/${categoryId}`;
+  const url = `https://454b-140-213-166-183.ngrok-free.app/api/quiz/category/${categoryId}`;
 
   useEffect(() => {
     getAllQuiz();
@@ -160,57 +160,69 @@ const QuizPercepatan = ({ navigation }) => {
           </View>
 
           <Button
-              title={quiz[currentQuestion]?.a}
-              onPress={() => {
-                // Set the selected answer for the current question
-                setQuiz(prevQuiz => {
-                  const updatedQuiz = [...prevQuiz];
-                  updatedQuiz[currentQuestion].selectedAnswer = 'a';
-                  return updatedQuiz;
-                });
-                
-                // Go to the next question
-                nextQuestion();
-              }}
-              buttonStyle={{
-                backgroundColor: 'rgba(244, 244, 244, 1)',
-                borderRadius: 3,
-              }}
-              containerStyle={{
-                height: 40,
-                width: 250,
-                marginHorizontal:  10,
-                marginVertical: 10,
-                borderRadius: 15
-              }}
-              titleStyle={{ fontFamily: 'Poppins-Regular', fontWeight: 'Bold', fontSize: 16, marginHorizontal: 20, color: '#86CC86' }}
-            />
+            title={quiz[currentQuestion]?.a}
+            onPress={() => {
+              // Set the selected answer for the current question
+              setQuiz(prevQuiz => {
+                const updatedQuiz = [...prevQuiz];
+                updatedQuiz[currentQuestion].selectedAnswer = 'a';
+                return updatedQuiz;
+              });
+
+              // Check if the selected answer is correct or not
+              const selectedAnswer = 'a';
+              const correctAnswer = quiz[currentQuestion]?.answer;
+              if (selectedAnswer === correctAnswer) {
+                setScore(score + 20);
+              }
+            }}
+            buttonStyle={{
+              backgroundColor: quiz[currentQuestion]?.selectedAnswer === 'a'
+                ? quiz[currentQuestion]?.answer === 'a' ? 'green' : 'red'
+                : 'rgba(198, 212, 230, 1)',
+              borderRadius: 3,
+            }}
+            containerStyle={{
+              height: 40,
+              width: 250,
+              marginHorizontal: 10,
+              marginVertical: 10,
+              borderRadius: 15,
+            }}
+            titleStyle={{ fontFamily: 'Poppins-Regular', fontWeight: 'Bold' }}
+          />
           <Button
-              title={quiz[currentQuestion]?.b}
-              onPress={() => {
-                // Set the selected answer for the current question
-                setQuiz(prevQuiz => {
-                  const updatedQuiz = [...prevQuiz];
-                  updatedQuiz[currentQuestion].selectedAnswer = 'b';
-                  return updatedQuiz;
-                });
-                
-                // Go to the next question
-                nextQuestion();
-              }}
-              buttonStyle={{
-                backgroundColor: 'rgba(244, 244, 244, 1)',
-                borderRadius: 3,
-              }}
-              containerStyle={{
-                height: 40,
-                width: 250,
-                marginHorizontal: 10,
-                marginVertical: 10,
-                borderRadius: 15
-              }}
-              titleStyle={{ fontFamily: 'Poppins-Regular', fontWeight: 'Bold', fontSize: 16, marginHorizontal: 20, color: '#86CC86' }}
-            />
+          title={quiz[currentQuestion]?.b}
+          onPress={() => {
+            // Set the selected answer for the current question
+            setQuiz(prevQuiz => {
+              const updatedQuiz = [...prevQuiz];
+              updatedQuiz[currentQuestion].selectedAnswer = 'b';
+              return updatedQuiz;
+            });
+
+            // Check if the selected answer is correct or not
+            const selectedAnswer = 'b';
+            const correctAnswer = quiz[currentQuestion]?.answer;
+            if (selectedAnswer === correctAnswer) {
+              setScore(score + 20);
+            }
+          }}
+          buttonStyle={{
+            backgroundColor: quiz[currentQuestion]?.selectedAnswer === 'b'
+              ? quiz[currentQuestion]?.answer === 'b' ? 'green' : 'red'
+              : 'rgba(198, 212, 230, 1)',
+            borderRadius: 3,
+          }}
+          containerStyle={{
+            height: 40,
+            width: 250,
+            marginHorizontal: 10,
+            marginVertical: 10,
+            borderRadius: 15,
+          }}
+          titleStyle={{ fontFamily: 'Poppins-Regular', fontWeight: 'Bold' }}
+        />
           <Button
             title={quiz[currentQuestion]?.c}
             onPress={() => {
@@ -220,23 +232,29 @@ const QuizPercepatan = ({ navigation }) => {
                 updatedQuiz[currentQuestion].selectedAnswer = 'c';
                 return updatedQuiz;
               });
-              
-              // Go to the next question
-              nextQuestion();
+
+              // Check if the selected answer is correct or not
+              const selectedAnswer = 'c';
+              const correctAnswer = quiz[currentQuestion]?.answer;
+              if (selectedAnswer === correctAnswer) {
+                setScore(score + 20);
+              }
             }}
             buttonStyle={{
-            backgroundColor: 'rgba(244, 244, 244, 1)',
-            borderRadius: 3,
+              backgroundColor: quiz[currentQuestion]?.selectedAnswer === 'c'
+                ? quiz[currentQuestion]?.answer === 'c' ? 'green' : 'red'
+                : 'rgba(198, 212, 230, 1)',
+              borderRadius: 3,
             }}
             containerStyle={{
-            height: 40,
-            width: 250,
-            marginHorizontal: 10,
-            marginVertical: 10,
-            borderRadius: 15
+              height: 40,
+              width: 250,
+              marginHorizontal: 10,
+              marginVertical: 10,
+              borderRadius: 15,
             }}
-            titleStyle={{ fontFamily: 'Poppins-Regular', fontWeight: 'Bold', fontSize: 16, marginHorizontal: 20, color: '#86CC86' }}
-            />
+            titleStyle={{ fontFamily: 'Poppins-Regular', fontWeight: 'Bold' }}
+          />
 
           <Button type="solid"
           buttonStyle={{
